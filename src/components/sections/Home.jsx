@@ -410,61 +410,65 @@ export const Home = () => {
             }}
           >
             <svg width="200" height="200" viewBox="0 0 150 150">
-              <circle cx="75" cy="40" r="25" fill="#ffe0b2" stroke="#ff69b4" strokeWidth="3" />
-              {(stage === "initial" ||
-                stage === "heroArrives" ||
-                stage === "cakeReveal" ||
-                stage === "eatCake" ||
-                stage === "celebration" ||
-                stage === "final") && (
-                  <>
-                    <path d="M65,45 Q75,55 85,45" fill="none" stroke="#000" strokeWidth="2" />
-                    <circle cx="65" cy="35" r="4" fill="#000" />
-                    <circle cx="85" cy="35" r="4" fill="#000" />
-                  </>
-                )}
-              {stage === "standoff" && (
-                <>
-                  <circle cx="65" cy="35" r="5" fill="#000" />
-                  <circle cx="85" cy="35" r="5" fill="#000" />
-                  <circle cx="65" cy="35" r="2" fill="#fff" />
-                  <circle cx="85" cy="35" r="2" fill="#fff" />
-                  <path d="M65,50 Q75,40 85,50" fill="none" stroke="#000" strokeWidth="2" />
-                </>
-              )}
-              {stage === "bombThreat" && (
-                <>
-                  <path d="M60,40 Q75,30 90,40" fill="none" stroke="#000" strokeWidth="2" />
-                  <circle cx="65" cy="35" r="4" fill="#000" />
-                  <circle cx="85" cy="35" r="4" fill="#000" />
-                  <line x1="62" y1="33" x2="68" y2="37" stroke="#000" strokeWidth="2" />
-                  <line x1="68" y1="33" x2="62" y2="37" stroke="#000" strokeWidth="2" />
-                  <line x1="82" y1="33" x2="88" y2="37" stroke="#000" strokeWidth="2" />
-                  <line x1="88" y1="33" x2="82" y2="37" stroke="#000" strokeWidth="2" />
-                </>
-              )}
-              <line x1="75" y1="65" x2="75" y2="100" stroke="#ff69b4" strokeWidth="4" />
-              <line x1="75" y1="80" x2="50" y2="90" stroke="#ff69b4" strokeWidth="4" />
-              <line x1="75" y1="80" x2="100" y2="90" stroke="#ff69b4" strokeWidth="4" />
-              <line x1="75" y1="100" x2="60" y2="130" stroke="#ff69b4" strokeWidth="4" />
-              <line x1="75" y1="100" x2="90" y2="130" stroke="#ff69b4" strokeWidth="4" />
-              {stage !== "final" && (
-                <polygon points="50,20 75,0 100,20" fill="#ff0000" stroke="#000" strokeWidth="1" />
-              )}
-              {stage === "final" && (
-                <>
-                  <polygon points="55,15 75,0 95,15" fill="#00ff00" stroke="#000" strokeWidth="1" />
-                  <circle cx="75" cy="5" r="5" fill="#ffff00" />
-                </>
-              )}
-              <rect x="45" y="110" width="60" height="25" rx="8" fill="white" stroke="#000" strokeWidth="1" />
-              <text x="75" y="128" textAnchor="middle" fontSize="14" fill="black" fontWeight="bold">
-                Pragathi
-              </text>
-              {stage === "final" && (
-                <text x="75" y="25" textAnchor="middle" fontSize="20">👑</text>
-              )}
-            </svg>
+  {/* Head with blush */}
+  <circle cx="75" cy="40" r="25" fill="#ffe0b2" stroke="#ff69b4" strokeWidth="3" />
+  <circle cx="65" cy="42" r="3" fill="#ff9999" /> {/* Blush left */}
+  <circle cx="85" cy="42" r="3" fill="#ff9999" /> {/* Blush right */}
+
+  {/* Eyes and smile per stage */}
+  {(stage !== "bombThreat" && stage !== "standoff") && (
+    <>
+      {/* Cute smile */}
+      <path d="M65,45 Q75,55 85,45" fill="none" stroke="#000" strokeWidth="2" />
+      {/* Sparkly eyes */}
+      <circle cx="65" cy="35" r="3.5" fill="#000" />
+      <circle cx="85" cy="35" r="3.5" fill="#000" />
+      <circle cx="64" cy="34" r="1.2" fill="#fff" />
+      <circle cx="84" cy="34" r="1.2" fill="#fff" />
+    </>
+  )}
+
+  {/* Shocked eyes and X marks for bombThreat */}
+  {stage === "bombThreat" && (
+    <>
+      <path d="M60,40 Q75,30 90,40" fill="none" stroke="#000" strokeWidth="2" />
+      <line x1="62" y1="33" x2="68" y2="37" stroke="#000" strokeWidth="2" />
+      <line x1="68" y1="33" x2="62" y2="37" stroke="#000" strokeWidth="2" />
+      <line x1="82" y1="33" x2="88" y2="37" stroke="#000" strokeWidth="2" />
+      <line x1="88" y1="33" x2="82" y2="37" stroke="#000" strokeWidth="2" />
+    </>
+  )}
+
+  {/* Body and limbs - slightly curvier */}
+  <line x1="75" y1="65" x2="75" y2="100" stroke="#ff69b4" strokeWidth="4" />
+  <line x1="75" y1="80" x2="50" y2="90" stroke="#ff69b4" strokeWidth="4" />
+  <line x1="75" y1="80" x2="100" y2="90" stroke="#ff69b4" strokeWidth="4" />
+  <line x1="75" y1="100" x2="60" y2="130" stroke="#ff69b4" strokeWidth="4" />
+  <line x1="75" y1="100" x2="90" y2="130" stroke="#ff69b4" strokeWidth="4" />
+
+  {/* Hair Bow or Crown */}
+  {stage !== "final" && (
+    <polygon points="50,20 75,0 100,20" fill="#ff69b4" stroke="#000" strokeWidth="1" />
+  )}
+  {stage === "final" && (
+    <>
+      <polygon points="55,15 75,0 95,15" fill="#ffd700" stroke="#000" strokeWidth="1" />
+      <circle cx="75" cy="5" r="5" fill="#ffff00" />
+    </>
+  )}
+
+  {/* Name label */}
+  <rect x="45" y="110" width="60" height="25" rx="8" fill="white" stroke="#000" strokeWidth="1" />
+  <text x="75" y="128" textAnchor="middle" fontSize="14" fill="black" fontWeight="bold">
+    Doli
+  </text>
+
+  {/* Cute surprise icon in final stage */}
+  {stage === "final" && (
+    <text x="75" y="25" textAnchor="middle" fontSize="20">👑</text>
+  )}
+</svg>
+
             <p className="text-white mt-2 text-lg font-bold">
               {stage === "initial" && "Click me!"}
               {stage === "standoff" && "Help me!"}
@@ -582,135 +586,66 @@ export const Home = () => {
                 onClick={handleCakeClick}
               >
                 <svg width="350" height="350" viewBox="0 0 300 300">
-                  <rect
-                    x="50"
-                    y="150"
-                    width="200"
-                    height="60"
-                    rx="15"
-                    fill="#f5f5dc"
-                    stroke="#d2b48c"
-                    strokeWidth="4"
-                  />
-                  <rect
-                    x="75"
-                    y="100"
-                    width="150"
-                    height="50"
-                    rx="15"
-                    fill="#f5f5dc"
-                    stroke="#d2b48c"
-                    strokeWidth="4"
-                  />
-                  <rect
-                    x="100"
-                    y="50"
-                    width="100"
-                    height="50"
-                    rx="15"
-                    fill="#f5f5dc"
-                    stroke="#d2b48c"
-                    strokeWidth="4"
-                  />
-                  <path
-                    d="M50,150 Q75,140 100,150 Q125,140 150,150 Q175,140 200,150 Q225,140 250,150"
-                    fill="pink"
-                    stroke="pink"
-                    strokeWidth="3"
-                  />
-                  <path
-                    d="M75,100 Q100,90 125,100 Q150,90 175,100 Q200,90 225,100"
-                    fill="pink"
-                    stroke="pink"
-                    strokeWidth="3"
-                  />
-                  <path
-                    d="M100,50 Q125,40 150,50 Q175,40 200,50"
-                    fill="pink"
-                    stroke="pink"
-                    strokeWidth="3"
-                  />
-                  {!cakeEaten ? (
-                    <>
-                      <line x1="120" y1="50" x2="120" y2="30" stroke="#ffd700" strokeWidth="4" />
-                      <line x1="150" y1="50" x2="150" y2="20" stroke="#ffd700" strokeWidth="4" />
-                      <line x1="180" y1="50" x2="180" y2="30" stroke="#ffd700" strokeWidth="4" />
-                      <motion.circle
-                        cx="120"
-                        cy="25"
-                        r="6"
-                        fill="#ff4500"
-                        animate={{ scale: [1, 1.3, 1] }}
-                        transition={{ duration: 0.5, repeat: Infinity }}
-                      />
-                      <motion.circle
-                        cx="150"
-                        cy="15"
-                        r="7"
-                        fill="#ff4500"
-                        animate={{ scale: [1, 1.4, 1] }}
-                        transition={{ duration: 0.7, repeat: Infinity }}
-                      />
-                      <motion.circle
-                        cx="180"
-                        cy="25"
-                        r="6"
-                        fill="#ff4500"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 0.6, repeat: Infinity }}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <motion.circle
-                        cx="120"
-                        cy="30"
-                        r="5"
-                        fill="#fff"
-                        animate={{ opacity: [0, 1, 0], y: [30, 0] }}
-                        transition={{ duration: 1, delay: 0.1 }}
-                      />
-                      <motion.circle
-                        cx="150"
-                        cy="20"
-                        r="6"
-                        fill="#fff"
-                        animate={{ opacity: [0, 1, 0], y: [25, -5] }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                      />
-                      <motion.circle
-                        cx="180"
-                        cy="30"
-                        r="5"
-                        fill="#fff"
-                        animate={{ opacity: [0, 1, 0], y: [30, 0] }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                      />
-                    </>
-                  )}
-                  <text
-                    x="150"
-                    y="80"
-                    textAnchor="middle"
-                    fontSize="22"
-                    fontWeight="bold"
-                    fill="white"
-                    className="drop-shadow-lg"
-                  >
-                    Happy Birthday
-                  </text>
-                  <text
-                    x="150"
-                    y="110"
-                    textAnchor="middle"
-                    fontSize="28"
-                    fontWeight="bold"
-                    fill="white"
-                    className="drop-shadow-lg"
-                  >
-                    Pragathi!
-                  </text>
-                </svg>
+    {/* Cake Base */}
+    <rect x="50" y="150" width="200" height="60" rx="15" fill="url(#cakeBase)" stroke="#d2b48c" strokeWidth="4" />
+    <rect x="75" y="100" width="150" height="50" rx="15" fill="url(#cakeMid)" stroke="#d2b48c" strokeWidth="4" />
+    <rect x="100" y="50" width="100" height="50" rx="15" fill="url(#cakeTop)" stroke="#d2b48c" strokeWidth="4" />
+
+    {/* Cream Layers */}
+    <path d="M50,150 Q75,140 100,150 Q125,140 150,150 Q175,140 200,150 Q225,140 250,150" fill="#ffb6c1" />
+    <path d="M75,100 Q100,90 125,100 Q150,90 175,100 Q200,90 225,100" fill="#ffb6c1" />
+    <path d="M100,50 Q125,40 150,50 Q175,40 200,50" fill="#ffb6c1" />
+
+    {/* Candles */}
+    {!cakeEaten ? (
+      <>
+        <line x1="120" y1="50" x2="120" y2="30" stroke="#ffd700" strokeWidth="4" />
+        <line x1="150" y1="50" x2="150" y2="20" stroke="#ffd700" strokeWidth="4" />
+        <line x1="180" y1="50" x2="180" y2="30" stroke="#ffd700" strokeWidth="4" />
+        {/* Flames */}
+        <motion.circle cx="120" cy="25" r="6" fill="orange" animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 0.5, repeat: Infinity }} />
+        <motion.circle cx="150" cy="15" r="7" fill="orange" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 0.7, repeat: Infinity }} />
+        <motion.circle cx="180" cy="25" r="6" fill="orange" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.6, repeat: Infinity }} />
+      </>
+    ) : (
+      <>
+        {/* Blowing out candle particles */}
+        <motion.circle cx="120" cy="30" r="5" fill="#fff" animate={{ opacity: [0, 1, 0], y: [30, 0] }} transition={{ duration: 1, delay: 0.1 }} />
+        <motion.circle cx="150" cy="20" r="6" fill="#fff" animate={{ opacity: [0, 1, 0], y: [25, -5] }} transition={{ duration: 1, delay: 0.2 }} />
+        <motion.circle cx="180" cy="30" r="5" fill="#fff" animate={{ opacity: [0, 1, 0], y: [30, 0] }} transition={{ duration: 1, delay: 0.3 }} />
+      </>
+    )}
+
+    {/* Text */}
+    <text x="150" y="80" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#fff" stroke="#000" strokeWidth="1">
+      Happy Birthday
+    </text>
+    <text x="150" y="110" textAnchor="middle" fontSize="28" fontWeight="bold" fill="#fff" stroke="#000" strokeWidth="1.2">
+      Pragathi!
+    </text>
+
+    {/* Confetti (optional: more can be added) */}
+    <circle cx="60" cy="60" r="4" fill="#e63946" />
+    <circle cx="240" cy="80" r="5" fill="#2a9d8f" />
+    <circle cx="90" cy="40" r="3" fill="#f4a261" />
+    <circle cx="210" cy="50" r="4" fill="#e9c46a" />
+
+    {/* Gradients */}
+    <defs>
+      <linearGradient id="cakeBase" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#fceabb" />
+        <stop offset="100%" stopColor="#f8b500" />
+      </linearGradient>
+      <linearGradient id="cakeMid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#fff5d7" />
+        <stop offset="100%" stopColor="#f5c469" />
+      </linearGradient>
+      <linearGradient id="cakeTop" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#fff" />
+        <stop offset="100%" stopColor="#f1d3a2" />
+      </linearGradient>
+    </defs>
+  </svg>
                 {stage === "eatCake" && !cakeEaten && (
                   <p className="text-white mt-2 text-lg font-bold animate-pulse">Click to take a bite!</p>
                 )}
@@ -719,43 +654,62 @@ export const Home = () => {
 
           {/* Bomb */}
           {stage === "bombThreat" && showBomb && (
-            <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-40"
-            >
-              <motion.div
-                animate={{
-                  rotate: [0, 10, -10, 0],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                }}
-              >
-                <svg width="250" height="250" viewBox="0 0 200 200">
-                  <circle cx="100" cy="100" r="50" fill="#333" stroke="#666" strokeWidth="4" />
-                  <circle cx="100" cy="100" r="40" fill="#555" />
-                  <text x="100" y="110" textAnchor="middle" fontSize="40" fill="red">💣</text>
-                  <motion.text
-                    x="100"
-                    y="180"
-                    textAnchor="middle"
-                    fontSize="24"
-                    fill="white"
-                    fontWeight="bold"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    SURPRISE!!!
-                  </motion.text>
-                </svg>
-              </motion.div>
-            </motion.div>
-          )}
+  <motion.div
+    initial={{ opacity: 0, y: -100 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-40 bg-black bg-opacity-80"
+  >
+    <motion.div
+      animate={{
+        rotate: [0, 5, -5, 0],
+        scale: [1, 1.15, 1],
+      }}
+      transition={{
+        duration: 0.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <svg width="280" height="280" viewBox="0 0 220 220">
+        <defs>
+          <radialGradient id="bomb-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ff0000" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#000" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        <circle cx="110" cy="110" r="60" fill="url(#bomb-glow)" />
+        <circle cx="110" cy="110" r="50" fill="#222" stroke="#ff0000" strokeWidth="4" />
+        <circle cx="110" cy="110" r="40" fill="#333" />
+        <text x="110" y="125" textAnchor="middle" fontSize="48" fill="#ff4444">
+          💣
+        </text>
+
+        <motion.text
+          x="110"
+          y="190"
+          textAnchor="middle"
+          fontSize="28"
+          fill="yellow"
+          fontWeight="bold"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [1, 0.6, 1],
+          }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          SURPRISE!!!
+        </motion.text>
+      </svg>
+    </motion.div>
+  </motion.div>
+)}
+
         </div>
       </div>
 
@@ -807,10 +761,10 @@ export const Home = () => {
                   delay: Math.random() * 0.5
                 }}
               >
-                {i % 6 === 0 ? "P" :
-                  i % 6 === 1 ? "🎊" :
-                    i % 6 === 2 ? "✨" :
-                      i % 6 === 3 ? "🎈" :
+                {i % 6 === 0 ? "Pragathi" :
+                  i % 6 === 1 ? "🎊bot" :
+                    i % 6 === 2 ? "✨model eh" :
+                      i % 6 === 3 ? "🎈23rd!!" :
                         i % 6 === 4 ? "🎁" : "🎉"}
                 {i % 6 === 0 && (
                   <span className="text-sm absolute -bottom-7 left-0 right-0 text-center text-white font-bold">
@@ -865,43 +819,56 @@ export const Home = () => {
           {/* Floating hearts with occasional messages */}
           {showHearts && [...Array(15)].map((_, i) => (
             <motion.div
-              key={i}
-              className="absolute text-2xl text-pink-400"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -100],
-                opacity: [1, 0],
-                scale: [1, 1.5]
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                delay: Math.random() * 2,
-                repeat: Infinity
-              }}
-            >
-              {i % 4 === 0 ? "P" : "❤️"}
-              {i % 4 === 0 && (
-                <span className="text-xs absolute -bottom-5 left-0 right-0 text-center text-white">
-                  {i % 8 === 0 ? "Pragathi" : "🎂"}
-                </span>
-              )}
-            </motion.div>
+  key={i}
+  className="absolute text-2xl md:text-3xl font-bold text-pink-400 drop-shadow-lg pointer-events-none"
+  style={{
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    mixBlendMode: "screen",
+    rotate: `${Math.random() * 360}deg`,
+  }}
+  animate={{
+    y: [0, -120],
+    opacity: [1, 0],
+    scale: [1, 1.6],
+    rotate: [0, 10, -10, 0]
+  }}
+  transition={{
+    duration: 3 + Math.random() * 2,
+    delay: Math.random() * 2,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }}
+>
+  {i % 4 === 0 ? "P" : "💗"}
+  {i % 4 === 0 && (
+    <span className="text-xs md:text-sm absolute -bottom-5 left-0 right-0 text-center text-white font-semibold glow-text">
+      {i % 8 === 0 ? "Pragathi" : "🎂"}
+    </span>
+  )}
+</motion.div>
+
           ))}
 
           {/* Final birthday message */}
-         <motion.div
+        <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 2, duration: 1 }}
-  className="fixed bottom-10 bg-pink-300 text-pink-900 px-6 py-4 rounded-2xl shadow-2xl z-50 text-lg md:text-xl font-medium tracking-wide"
+  whileHover={{ scale: 1.03 }}
+  transition={{ delay: 2, duration: 1, type: "spring", stiffness: 100 }}
+  className="fixed bottom-10 left-1/2 transform -translate-x-1/2 px-8 py-5 rounded-3xl z-50 text-center shadow-2xl bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 backdrop-blur-lg text-pink-900 font-semibold text-lg md:text-xl tracking-wide animate-pulse border-2 border-pink-500"
 >
-  🎂 <span className="font-bold text-pink-700">Happy Birthday, Pragathi!</span> 🎉<br />
-   Hope your day’s as extra as you are 💖<br />
-  Now stop blushing… okay wait, don’t 😜💗
+  <p className="text-shadow-pink text-xl md:text-2xl">
+    🎉 <span className="text-pink-800 font-bold">Happy Birthday, Pragathi! 🎂</span>
+  </p>
+  <p className="mt-1">
+    ✨ Hope your day’s as <span className="font-bold text-pink-700">extra</span> as you are 💖
+  </p>
+  <p className="mt-1">
+    😳 Now stop blushing… <span className="italic">okay wait, don’t</span> 😜💗
+  </p>
 </motion.div>
+
 
         </>
       )}
